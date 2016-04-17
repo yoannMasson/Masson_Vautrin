@@ -1,3 +1,4 @@
-100,Emma
-500,Pif
-450,Arthur
+datetime,score,player
+2016-04-15 20:00:00 UTC,100,Emma
+2016-04-15 20:00:01 UTC,500,Pif
+2016-04-15 20:00:02 UTC,450,Arthur

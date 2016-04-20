@@ -21,9 +21,9 @@ public class TestHighScore {
 		Scanner s = new Scanner(System.in);
 		HighScore hs = new HighScore();
 		String[] onlineScore;
+		try{
+			onlineScore = hs.getScores();//Récupération des scores en ligne
 
-		onlineScore = hs.getScores();//Récupération des scores en ligne
-		try{ //Dans le cas où les scores en ligne ne sont pas valides, c'est à dire pas que des chiffres
 			tri(onlineScore);
 			for(int i=0;i<onlineScore.length;i++){//Affichage des scores en ligne
 				if(i==0){
@@ -37,24 +37,31 @@ public class TestHighScore {
 			pseudo = s.next();
 			s.close();
 
-			try{
-				file = new FileInputStream(nomFichier);
-				inputStream = new InputStreamReader(file);
-				BufferedReader buffer = new BufferedReader(inputStream);
-				//Remplissage de la liste des scores 
-				LireScoreFichier(scores,buffer);
-				System.out.println("Voici votre score "+pseudo+": "+scores.get((int)(Math.random()*scores.size())));
-				buffer.close();
-				//Gestion des exceptions
-			}catch(FileNotFoundException e){
-				System.out.println("Le fichier "+nomFichier+" n'existe pas");
-				e.printStackTrace();
-			}catch (IOException e) {
-				System.out.println("Problème lors de la lecture du fichier "+nomFichier);
-				e.printStackTrace();
-			}
+			file = new FileInputStream(nomFichier);//Lecture des scores dans le fichier
+			inputStream = new InputStreamReader(file);
+			BufferedReader buffer = new BufferedReader(inputStream);
+			
+			LireScoreFichier(scores,buffer);//Remplissage de la liste des scores 
+			System.out.println("Voici votre score "+pseudo+": "+scores.get((int)(Math.random()*scores.size())));
+			buffer.close();
+			
+			//Gestion des exceptions
+		}catch(FileNotFoundException e){
+			System.out.println("Le fichier "+nomFichier+" n'existe pas");
+			e.printStackTrace();
 		}catch(NotNumberException e){
 			System.out.println("Les scores en ligne ne contiennent pas que des chiffres");
+			e.printStackTrace();
+		}catch(UnsupportedEncodingException e){
+			System.out.println("Problème d'encodage");
+		}catch(HttpException e){
+			System.out.println("Problème avec la connection au serveur");
+			e.printStackTrace();
+		}catch (IOException e) {
+			System.out.println("Problème lors de la lecture du fichier "+nomFichier);
+			e.printStackTrace();
+		}catch (Exception e){
+			System.out.println("Aucune idée du pb, you are screwed");
 			e.printStackTrace();
 		}
 	}

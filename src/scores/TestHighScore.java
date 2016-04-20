@@ -22,10 +22,10 @@ public class TestHighScore {
 		HighScore hs = new HighScore();
 		String[] onlineScore;
 
-		onlineScore = hs.getScores();//Affichage des scores en ligne
+		onlineScore = hs.getScores();//Récupération des scores en ligne
 		try{ //Dans le cas où les scores en ligne ne sont pas valides, c'est à dire pas que des chiffres
 			tri(onlineScore);
-			for(int i=0;i<onlineScore.length;i++){
+			for(int i=0;i<onlineScore.length;i++){//Affichage des scores en ligne
 				if(i==0){
 					System.out.println("1er: "+onlineScore[i]);
 				}else{

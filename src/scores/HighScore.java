@@ -16,8 +16,9 @@ import org.jsoup.select.*;
 
 public class HighScore {
 
-	public static String urlConnection = "https://thingspeak.com/login";
-	public static String urlChannelFeed = "https://api.thingspeak.com/channels/109203/feeds.csv";
+	public static final int NOMBRE_SCORE_AFFICHE = 10;
+	public static final String URL_CONNECTION = "https://thingspeak.com/login";
+	public static final String URL_CHANNEL_FEED = "https://api.thingspeak.com/channels/109203/feeds.csv";
 
 	/**
 	 * Open an HTTP Connection with the ThingSpeak Server online
@@ -37,17 +38,30 @@ public class HighScore {
 		// authentication
 		connection.sendPost(urlConnection, postParams);*/
 
-		// 3. success then go to gmail.
-		String result = connection.GetPageContent(urlChannelFeed);
-		System.out.println(result);
+		// Recuperation des données
+		String result = connection.GetPageContent(URL_CHANNEL_FEED);
 
+		String[] resultat;
+		int i = 5;
+		int j = 0;
+		int nbScore =0;
+		String[] split = result.split(",");
 
-		String[] score = {"100","150","478","0","4","70","14","46","120","800"};
-		return score;
+		while(i<split.length && nbScore<NOMBRE_SCORE_AFFICHE){
+			i=i+3;
+			nbScore++;
+		}
 
-
-
+		i =5;
+		resultat = new String[nbScore];
+		while(i<split.length ){ // On s'aperçoit que les scores sont aux indices suivants 5,8,11,14,...
+			resultat[j]=split[i];
+			i = i+3;
+			j++;
+		}
+		return resultat;
 	}
+
 	//Classe qui va permettre la connection (voir http://www.mkyong.com/java/how-to-automate-login-a-website-java-example/)
 	private class HttpConnection{
 
@@ -55,7 +69,6 @@ public class HighScore {
 		private HttpsURLConnection conn;
 
 		private final String USER_AGENT = "Mozilla/5.0";
-
 
 
 		private void sendPost(String url, String postParams) throws HttpException {

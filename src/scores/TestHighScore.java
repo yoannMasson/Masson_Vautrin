@@ -19,7 +19,7 @@ public class TestHighScore {
 		List<Integer> scores = new LinkedList<>();
 		String pseudo;
 		Scanner s = new Scanner(System.in);
-		HighScore hs = new HighScore();
+		HighScore1 hs = new HighScore1();
 		String[] onlineScore;
 		try{
 			onlineScore = hs.getScores();//Récupération des scores en ligne

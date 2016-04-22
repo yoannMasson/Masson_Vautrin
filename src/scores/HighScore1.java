@@ -14,7 +14,7 @@ import org.jsoup.select.*;
  *	Classe that opens an HTTP Connection with a ThinkSpeak online server
  */
 
-public class HighScore {
+public class HighScore1 {
 
 	public static final int NOMBRE_SCORE_AFFICHE = 10;
 	public static final String URL_CONNECTION = "https://thingspeak.com/login";

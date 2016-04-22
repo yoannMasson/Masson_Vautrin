@@ -1,4 +1,4 @@
-package scores;
+package scores2;
 
 import javax.net.ssl.HttpsURLConnection;
 import java.io.*;
@@ -8,13 +8,13 @@ import org.jsoup.*;
 import org.jsoup.nodes.*;
 import org.jsoup.select.*;
 /**
- * @version 1.0.0
+ * @version 2.0.0
  * @author Yoann Masson & Baptiste Vautrin
  *
  *	Classe that opens an HTTP Connection with a ThinkSpeak online server
  */
 
-public class HighScore1 {
+public class HighScore2 {
 
 	public static final int NOMBRE_SCORE_AFFICHE = 10;
 	public static final String URL_CONNECTION = "https://thingspeak.com/login";

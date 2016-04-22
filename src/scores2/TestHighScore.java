@@ -1,10 +1,10 @@
-package scores;
+package scores2;
 
 import java.io.*;
 import java.util.*;
 
 /**
- * @version 1.0.0
+ * 
  * @author Yoann Masson & Baptiste Vautrin
  *
  *	Classe de test de la première version de HighScore
@@ -19,7 +19,7 @@ public class TestHighScore {
 		List<Integer> scores = new LinkedList<>();
 		String pseudo;
 		Scanner s = new Scanner(System.in);
-		HighScore1 hs = new HighScore1();
+		HighScore2 hs = new HighScore2();
 		String[] onlineScore;
 		try{
 			onlineScore = hs.getScores();//Récupération des scores en ligne

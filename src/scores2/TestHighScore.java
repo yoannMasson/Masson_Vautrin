@@ -19,18 +19,14 @@ public class TestHighScore {
 		List<Integer> scores = new LinkedList<>();
 		String pseudo;
 		Scanner s = new Scanner(System.in);
-		HighScore2 hs = new HighScore2();
+		HighScore2 highScore = new HighScore2();
 		String[] onlineScore;
 		try{
-			onlineScore = hs.getScores();//Récupération des scores en ligne
+			onlineScore = highScore.getScores();//Récupération des scores en ligne
 
-		    //tri(onlineScore);
+			System.out.println("----------------------ONLINE SCORE-----------------------");
 			for(int i=0;i<onlineScore.length;i++){//Affichage des scores en ligne
-				if(i==0){
-					System.out.println("1er: "+onlineScore[i]);
-				}else{
-					System.out.println((i+1)+"eme: "+onlineScore[i]);
-				}
+				System.out.println((i+1)+"eme: "+onlineScore[i]);
 			}
 
 			System.out.println("Rentrez votre pseudo.");//Demande du pseudo

@@ -1,9 +1,11 @@
 package scores2;
 
 import javax.net.ssl.HttpsURLConnection;
+
 import java.io.*;
 import java.net.*;
 import java.util.*;
+
 import org.jsoup.*;
 import org.jsoup.nodes.*;
 import org.jsoup.select.*;
@@ -23,7 +25,7 @@ public class HighScore2 {
 	/**
 	 * Open an HTTP Connection with the ThingSpeak Server online
 	 * @throws Exception related to the HTTP Connection
-	 * @return tableau scores
+	 * @return tableau online score with the format "pseudo: score"
 	 */
 	public String[] getScores()throws HttpException,UnsupportedEncodingException{
 
@@ -45,25 +47,30 @@ public class HighScore2 {
 		int i = 6;
 		int j = 0;
 		int nbScore =0;
-		String[] split = result.split(",|2016-");
+		String[] split = result.split(",|....-..-.. ..:..:.. UTC"); //Expression régulière, pour séparer les informations si on rencontre "," ou d'une date
 
-		while(i<split.length && nbScore<NOMBRE_SCORE_AFFICHE){
+		while(i<split.length && nbScore<NOMBRE_SCORE_AFFICHE){//On compte combien, on aura de score
 			i=i+4;
 			nbScore++;
 		}
 
-		i =6;
+		i=6;
 		resultat = new String[nbScore];
-		while(i<split.length ){ // On s'aperçoit que les scores sont aux indices suivants 5,8,11,14,...
+		while(i<split.length ){ // On s'aperçoit que les scores sont aux indices suivants 6,10,14,...
 			resultat[j]=split[i+1]+": "+split[i];//On concatène, le score et le pseudo
 			i = i+4;
 			j++;
 		}
 		return resultat;
 	}
-	
-	//TODO
-	public BestPlayer[] tenBestScores(String[] readScores){
+
+
+	/**
+	 * Méthode renvoyant un tableau de BestPlayer trié, 10 au maximum
+	 * @param readScores tableau de String de la forme "pseudo: score"
+	 */
+	public BestPlayer[] tenBestScores(String[] readScores){//Les données en entrée doivent être de la forme"pseudo: score" sous peine de lever une Exception
+		//TODO
 		return null;
 	}
 

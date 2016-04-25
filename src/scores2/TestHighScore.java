@@ -24,7 +24,7 @@ public class TestHighScore {
 		try{
 			onlineScore = hs.getScores();//Récupération des scores en ligne
 
-			tri(onlineScore);
+		    //tri(onlineScore);
 			for(int i=0;i<onlineScore.length;i++){//Affichage des scores en ligne
 				if(i==0){
 					System.out.println("1er: "+onlineScore[i]);
@@ -40,17 +40,14 @@ public class TestHighScore {
 			file = new FileInputStream(nomFichier);//Lecture des scores dans le fichier
 			inputStream = new InputStreamReader(file);
 			BufferedReader buffer = new BufferedReader(inputStream);
-			
+
 			LireScoreFichier(scores,buffer);//Remplissage de la liste des scores 
 			System.out.println("Voici votre score "+pseudo+": "+scores.get((int)(Math.random()*scores.size())));
 			buffer.close();
-			
+
 			//Gestion des exceptions
 		}catch(FileNotFoundException e){
 			System.out.println("Le fichier "+nomFichier+" n'existe pas");
-			e.printStackTrace();
-		}catch(NotNumberException e){
-			System.out.println("Les scores en ligne ne contiennent pas que des chiffres");
 			e.printStackTrace();
 		}catch(UnsupportedEncodingException e){
 			System.out.println("Problème d'encodage");

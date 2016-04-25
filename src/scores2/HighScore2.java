@@ -40,26 +40,31 @@ public class HighScore2 {
 
 		// Recuperation des données
 		String result = connection.GetPageContent(URL_CHANNEL_FEED);
-
+		System.out.println(result);
 		String[] resultat;
-		int i = 5;
+		int i = 6;
 		int j = 0;
 		int nbScore =0;
-		String[] split = result.split(",");
+		String[] split = result.split(",|2016-");
 
 		while(i<split.length && nbScore<NOMBRE_SCORE_AFFICHE){
-			i=i+3;
+			i=i+4;
 			nbScore++;
 		}
 
-		i =5;
+		i =6;
 		resultat = new String[nbScore];
 		while(i<split.length ){ // On s'aperçoit que les scores sont aux indices suivants 5,8,11,14,...
-			resultat[j]=split[i];
-			i = i+3;
+			resultat[j]=split[i+1]+": "+split[i];//On concatène, le score et le pseudo
+			i = i+4;
 			j++;
 		}
 		return resultat;
+	}
+	
+	//TODO
+	public BestPlayer[] tenBestScores(String[] readScores){
+		return null;
 	}
 
 	//Classe qui va permettre la connection (voir http://www.mkyong.com/java/how-to-automate-login-a-website-java-example/)

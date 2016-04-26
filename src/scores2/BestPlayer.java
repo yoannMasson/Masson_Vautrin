@@ -19,9 +19,11 @@ public class BestPlayer {
 	public int compareTo(BestPlayer player){
 		if (this.getScore()< player.getScore()){
 			return -1;
-		}else if (this.getScore() == player.getScore()){
+		}
+		else if (this.getScore() == player.getScore()){
 			return 0;
-		}else{
+		}
+		else{
 			return 1;
 		}
 	}
@@ -34,6 +36,14 @@ public class BestPlayer {
 
 	public void setScore(int score) {
 		this.score = score;
+	}
+	
+	public String getPseudo() {
+		return pseudo;
+	}
+	
+	public void setPseudo(String nom) {
+		this.pseudo = nom;
 	}
 
 }

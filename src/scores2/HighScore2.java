@@ -40,14 +40,14 @@ public class HighScore2 {
 		// authentication
 		connection.sendPost(urlConnection, postParams);*/
 
-		// Recuperation des données
+		// Recuperation des donnï¿½es
 		String result = connection.GetPageContent(URL_CHANNEL_FEED);
 		System.out.println(result);
 		String[] resultat;
 		int i = 6;
 		int j = 0;
 		int nbScore =0;
-		String[] split = result.split(",|....-..-.. ..:..:.. UTC"); //Expression régulière, pour séparer les informations si on rencontre "," ou d'une date
+		String[] split = result.split(",|....-..-.. ..:..:.. UTC"); //Expression rï¿½guliï¿½re, pour sï¿½parer les informations si on rencontre "," ou d'une date
 
 		while(i<split.length && nbScore<NOMBRE_SCORE_AFFICHE){//On compte combien, on aura de score
 			i=i+4;
@@ -56,8 +56,8 @@ public class HighScore2 {
 
 		i=6;
 		resultat = new String[nbScore];
-		while(i<split.length ){ // On s'aperçoit que les scores sont aux indices suivants 6,10,14,...
-			resultat[j]=split[i+1]+": "+split[i];//On concatène, le score et le pseudo
+		while(i<split.length ){ // On s'aperï¿½oit que les scores sont aux indices suivants 6,10,14,...
+			resultat[j]=split[i+1]+": "+split[i];//On concatï¿½ne, le score et le pseudo
 			i = i+4;
 			j++;
 		}
@@ -66,13 +66,85 @@ public class HighScore2 {
 
 
 	/**
-	 * Méthode renvoyant un tableau de BestPlayer trié, 10 au maximum
+	 * Mï¿½thode renvoyant un tableau de BestPlayer triï¿½, 10 au maximum
 	 * @param readScores tableau de String de la forme "pseudo: score"
 	 */
-	public BestPlayer[] tenBestScores(String[] readScores){//Les données en entrée doivent être de la forme"pseudo: score" sous peine de lever une Exception
+	public BestPlayer[] tenBestScores(String[] readScores){//Les donnï¿½es en entrï¿½e doivent ï¿½tre de la forme"pseudo: score" sous peine de lever une Exception
 		//TODO
-		return null;
+		int i=0;
+		int j=0;
+		int k=0;
+		BestPlayer[] tabPlayer;
+		String[] split;
+		String[] resName;
+		String[] resScore;
+		for(i=0;i<10;i++){
+			split = readScores[i].split(" "); // On separe le player de son score pour le mettre dans le tableau
+		}
+		
+		i=0;
+		j=0;
+		resName = new String[10];
+		resScore = new String[10];
+		while(i<split.length){
+			if(i%2 == 0){ // Le nom du player est tjrs sur un indice pair et le score tjrs sur un impair
+				resName[k] = split[i];
+				k++;
+			}
+			else {
+				resScore[j] = split[i];
+				j++;
+			}
+			i++;
+
+		}
+		
+		
+		k=0;
+		i=0;
+		j=0;
+		int[] resScoreInt;
+		while(i<resScore.length){
+			resScoreInt[i] = Integer.parseInt(resScore[i]); //Converti le string en int pour pouvoir utiliser operation de comparaison
+		}
+		
+        for (k=0 ;k<=(resScore.length-2);k++){ //Algo de tri pour trier les joueurs du plus fort au plus nul
+            for (j=(resScore.length-1); j>k ;j--){
+            	
+                    if (resScoreInt[j] > resScoreInt[j-1])
+                    {
+                            int x=resScoreInt[j-1]; // On inverse les scores
+                            resScoreInt[j-1]=resScoreInt[j];
+                            resScoreInt[j]=x;
+                            String y=resName[j-1]; // Le player suit le mouvement pour pas melanger les scores
+                            resName[j-1] = resName[j];
+                            resName[j]=y;
+                    }
+            }
+	
+        }
+        
+        // Les tableaux sont tries  il reste plus qu'a les arranger pour retourner un tableau de BestPlayer 
+        for(i=0; i<10; i++){
+        	tabPlayer[i].getPseudo() = resName[i];
+        	tabPlayer[i].getScore() = resScoreInt[i];
+        }
+		
+		
+		return tabPlayer;
 	}
+	
+    public static void tribulles(int t[])
+    {
+            for (int i=0 ;i<=(t.length-2);i++)
+                    for (int j=(t.length-1);i < j;j--)
+                            if (t[j] < t[j-1])
+                            {
+                                    int x=t[j-1];
+                                    t[j-1]=t[j];
+                                    t[j]=x;
+                            }
+    } 
 
 	//Classe qui va permettre la connection (voir http://www.mkyong.com/java/how-to-automate-login-a-website-java-example/)
 	private class HttpConnection{

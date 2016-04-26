@@ -7,6 +7,8 @@ import java.util.*;
 import org.jsoup.*;
 import org.jsoup.nodes.*;
 import org.jsoup.select.*;
+
+
 /**
  * @version 1.0.0
  * @author Yoann Masson & Baptiste Vautrin
@@ -38,25 +40,25 @@ public class HighScore1 {
 		// authentication
 		connection.sendPost(urlConnection, postParams);*/
 
-		// Recuperation des données
+		// Recuperation des donnï¿½es
 		String result = connection.GetPageContent(URL_CHANNEL_FEED);
-
+		System.out.println(result);
 		String[] resultat;
-		int i = 5;
+		int i = 6;
 		int j = 0;
 		int nbScore =0;
-		String[] split = result.split(",");
+		String[] split = result.split(",|....-..-.. ..:..:.. UTC"); //Expression rï¿½guliï¿½re, pour sï¿½parer les informations si on rencontre "," ou d'une date
 
-		while(i<split.length && nbScore<NOMBRE_SCORE_AFFICHE){
-			i=i+3;
+		while(i<split.length && nbScore<NOMBRE_SCORE_AFFICHE){//On compte combien, on aura de score
+			i=i+4;
 			nbScore++;
 		}
 
-		i =5;
+		i=6;
 		resultat = new String[nbScore];
-		while(i<split.length ){ // On s'aperçoit que les scores sont aux indices suivants 5,8,11,14,...
-			resultat[j]=split[i];
-			i = i+3;
+		while(i<split.length ){ // On s'aperï¿½oit que les scores sont aux indices suivants 6,10,14,...
+			resultat[j]=split[i+1]+": "+split[i];//On concatï¿½ne, le score et le pseudo
+			i = i+4;
 			j++;
 		}
 		return resultat;

@@ -7,7 +7,7 @@ import java.util.*;
  * @version 1.0.0
  * @author Yoann Masson & Baptiste Vautrin
  *
- *	Classe de test de la première version de HighScore
+ *	Classe de test de la premiï¿½re version de HighScore
  */
 public class TestHighScore {
 
@@ -22,15 +22,10 @@ public class TestHighScore {
 		HighScore1 hs = new HighScore1();
 		String[] onlineScore;
 		try{
-			onlineScore = hs.getScores();//Récupération des scores en ligne
+			onlineScore = hs.getScores();//Rï¿½cupï¿½ration des scores en ligne
 
-			tri(onlineScore);
-			for(int i=0;i<onlineScore.length;i++){//Affichage des scores en ligne
-				if(i==0){
-					System.out.println("1er: "+onlineScore[i]);
-				}else{
-					System.out.println((i+1)+"eme: "+onlineScore[i]);
-				}
+			for(int i=0;i<onlineScore.length;i++){//Affichage des scores en ligne	
+					System.out.println(onlineScore[i]);
 			}
 
 			System.out.println("Rentrez votre pseudo.");//Demande du pseudo
@@ -49,25 +44,22 @@ public class TestHighScore {
 		}catch(FileNotFoundException e){
 			System.out.println("Le fichier "+nomFichier+" n'existe pas");
 			e.printStackTrace();
-		}catch(NotNumberException e){
-			System.out.println("Les scores en ligne ne contiennent pas que des chiffres");
-			e.printStackTrace();
 		}catch(UnsupportedEncodingException e){
-			System.out.println("Problème d'encodage");
+			System.out.println("Problï¿½me d'encodage");
 		}catch(HttpException e){
-			System.out.println("Problème avec la connection au serveur");
+			System.out.println("Problï¿½me avec la connection au serveur");
 			e.printStackTrace();
 		}catch (IOException e) {
-			System.out.println("Problème lors de la lecture du fichier "+nomFichier);
+			System.out.println("Problï¿½me lors de la lecture du fichier "+nomFichier);
 			e.printStackTrace();
 		}catch (Exception e){
-			System.out.println("Aucune idée du pb, you are screwed");
+			System.out.println("Aucune idï¿½e du pb, you are screwed");
 			e.printStackTrace();
 		}
 	}
 
 	/**
-	 * Tri un tableau de String par ordre croissant avec la méthode du tri par bulles.
+	 * Tri un tableau de String par ordre croissant avec la mï¿½thode du tri par bulles.
 	 * @param onlineScore
 	 */
 	public static void tri(String[] tab) throws NotNumberException {
@@ -75,7 +67,7 @@ public class TestHighScore {
 			int i=0;
 			String tampon = null;
 			if(tab.length > 1){
-				while (i < (tab.length-1)){ //On ne voudrait pas comparer le dernier élément avec le dernier+1
+				while (i < (tab.length-1)){ //On ne voudrait pas comparer le dernier ï¿½lï¿½ment avec le dernier+1
 					if(Integer.parseInt(tab[i]) > Integer.parseInt(tab[i+1])){
 						tampon = tab[i];
 						tab[i]=tab[i+1];
@@ -94,9 +86,9 @@ public class TestHighScore {
 
 	/**
 	 * Lit les scores d'un fichier et les mets dans la liste scores
-	 * @param scores liste dans laquelle les scores sont ajoutés
-	 * @param buffer buffer où sont lu les fichiers
-	 * @throws IOException Dans le cas où le buffer n'est pas valide
+	 * @param scores liste dans laquelle les scores sont ajoutï¿½s
+	 * @param buffer buffer oï¿½ sont lu les fichiers
+	 * @throws IOException Dans le cas oï¿½ le buffer n'est pas valide
 	 */
 	private static void LireScoreFichier(List<Integer> scores,BufferedReader buffer) throws IOException{
 		String score;

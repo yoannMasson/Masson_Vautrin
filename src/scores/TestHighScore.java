@@ -4,10 +4,10 @@ import java.io.*;
 import java.util.*;
 
 /**
- * @version 1.0.0
+ * @version 1.1.0
  * @author Yoann Masson & Baptiste Vautrin
  *
- *	Classe de test de la premiï¿½re version de HighScore
+ *	Test Class for the first Version of the game
  */
 public class TestHighScore {
 
@@ -22,13 +22,13 @@ public class TestHighScore {
 		HighScore1 hs = new HighScore1();
 		String[] onlineScore;
 		try{
-			onlineScore = hs.getScores();//Rï¿½cupï¿½ration des scores en ligne
+			onlineScore = hs.getScores();//Récupération des scores en ligne
 
 			for(int i=0;i<onlineScore.length;i++){//Affichage des scores en ligne	
 					System.out.println(onlineScore[i]);
 			}
 
-			System.out.println("Rentrez votre pseudo.");//Demande du pseudo
+			System.out.println("Rentrez votre pseudo. ( espace non autorisé) ");//Demande du pseudo
 			pseudo = s.next();
 			s.close();
 
@@ -58,37 +58,12 @@ public class TestHighScore {
 		}
 	}
 
-	/**
-	 * Tri un tableau de String par ordre croissant avec la mï¿½thode du tri par bulles.
-	 * @param onlineScore
-	 */
-	public static void tri(String[] tab) throws NotNumberException {
-		try{
-			int i=0;
-			String tampon = null;
-			if(tab.length > 1){
-				while (i < (tab.length-1)){ //On ne voudrait pas comparer le dernier ï¿½lï¿½ment avec le dernier+1
-					if(Integer.parseInt(tab[i]) > Integer.parseInt(tab[i+1])){
-						tampon = tab[i];
-						tab[i]=tab[i+1];
-						tab[i+1]=tampon;
-						i=0;
-					}else{
-						i++;	
-					}
-				}
-			}
-		}catch(NumberFormatException e){
-			throw new NotNumberException();
-		}
-
-	}
 
 	/**
-	 * Lit les scores d'un fichier et les mets dans la liste scores
-	 * @param scores liste dans laquelle les scores sont ajoutï¿½s
-	 * @param buffer buffer oï¿½ sont lu les fichiers
-	 * @throws IOException Dans le cas oï¿½ le buffer n'est pas valide
+	 * Read scores from a file and put them in a List
+	 * @param scores list where the scores will be stored
+	 * @param buffer buffer where are read the scores
+	 * @throws IOException in case the buffer is not valid.
 	 */
 	private static void LireScoreFichier(List<Integer> scores,BufferedReader buffer) throws IOException{
 		String score;

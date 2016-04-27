@@ -125,9 +125,9 @@ public class HighScore2 {
         // Les tableaux sont tries  il reste plus qu'a les arranger pour retourner un tableau de BestPlayer 
         /* Boucle pour remplir le tableau de retour */
         for(i=0; i<10; i++){
-        	//ca merde ici je sais pas encore pourquoi
-        	tabPlayer[i].getPseudo() = resName[i];
-        	tabPlayer[i].getScore() = resScoreInt[i];
+        	//probleme ici avant a voir si ca marche ulterieurement
+        	tabPlayer[i].setPseudo(resName[i]);
+        	tabPlayer[i].setScore(resScoreInt[i]);
         }
 		
 		

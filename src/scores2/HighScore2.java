@@ -78,15 +78,11 @@ public class HighScore2 {
 		String[] split;
 		String[] resName;
 		String[] resScore;
-		for(i=0;i<10;i++){
-			split = readScores[i].split(" "); // On separe le player de son score pour le mettre dans le tableau
-		}
-		
-		i=0;
-		j=0;
 		resName = new String[10];
 		resScore = new String[10];
-		while(i<split.length){
+		for(i=0;i<10;i++){
+			split = readScores[i].split(" "); // On separe le player de son score pour le mettre dans le tableau
+			
 			if(i%2 == 0){ // Le nom du player est tjrs sur un indice pair et le score tjrs sur un impair
 				resName[k] = split[i];
 				k++;
@@ -95,19 +91,21 @@ public class HighScore2 {
 				resScore[j] = split[i];
 				j++;
 			}
-			i++;
-
 		}
-		
 		
 		k=0;
 		i=0;
 		j=0;
 		int[] resScoreInt;
+		
+		/* Integer.parseInt fonction trouvee sur Internet 
+		 * Boucle pour convertir la String recuperee en entier */
 		while(i<resScore.length){
 			resScoreInt[i] = Integer.parseInt(resScore[i]); //Converti le string en int pour pouvoir utiliser operation de comparaison
 		}
 		
+		
+		/* Boucle de tri */
         for (k=0 ;k<=(resScore.length-2);k++){ //Algo de tri pour trier les joueurs du plus fort au plus nul
             for (j=(resScore.length-1); j>k ;j--){
             	
@@ -125,6 +123,7 @@ public class HighScore2 {
         }
         
         // Les tableaux sont tries  il reste plus qu'a les arranger pour retourner un tableau de BestPlayer 
+        /* Boucle pour remplir le tableau de retour */
         for(i=0; i<10; i++){
         	//ca merde ici je sais pas encore pourquoi
         	tabPlayer[i].getPseudo() = resName[i];

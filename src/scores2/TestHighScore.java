@@ -21,14 +21,16 @@ public class TestHighScore {
 		Scanner s = new Scanner(System.in);
 		HighScore2 hs = new HighScore2();
 		String[] onlineScore;
+		BestPlayer[] tabPlayer = new BestPlayer[10];
 		try{
-			onlineScore = hs.getScores();//Récupération des scores en ligne
-
+			onlineScore = hs.getScores();//Rï¿½cupï¿½ration des scores en ligne
+			//tabPlayer = hs.tenBestScores(onlineScore);
+			
 			for(int i=0;i<onlineScore.length;i++){//Affichage des scores en ligne	
 					System.out.println(onlineScore[i]);
 			}
-
-			System.out.println("Rentrez votre pseudo. ( espace non autorisé) ");//Demande du pseudo
+			
+			System.out.println("Rentrez votre pseudo. ( espace non autorisï¿½) ");//Demande du pseudo
 			pseudo = s.next();
 			s.close();
 
@@ -39,6 +41,9 @@ public class TestHighScore {
 			LireScoreFichier(scores,buffer);//Remplissage de la liste des scores 
 			System.out.println("Voici votre score "+pseudo+": "+scores.get((int)(Math.random()*scores.size())));
 			buffer.close();
+			
+			
+			
 			
 			//Gestion des exceptions
 		}catch(FileNotFoundException e){
@@ -56,6 +61,8 @@ public class TestHighScore {
 			System.out.println("Aucune idï¿½e du pb, you are screwed");
 			e.printStackTrace();
 		}
+		
+
 	}
 
 

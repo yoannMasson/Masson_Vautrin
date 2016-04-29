@@ -74,13 +74,12 @@ public class HighScore2 {
 		int i=0;
 		int j=0;
 		int k=0;
-		BestPlayer[] tabPlayer;
+		BestPlayer[] tabPlayer = null;
 		String[] split;
-		String[] resName;
-		String[] resScore;
-		resName = new String[10];
-		resScore = new String[10];
-		for(i=0;i<10;i++){
+		String[] resName = null;
+		String[] resScore = null;
+
+		for(i=0;i<readScores.length;i++){
 			split = readScores[i].split(" "); // On separe le player de son score pour le mettre dans le tableau
 			
 			if(i%2 == 0)
@@ -100,7 +99,7 @@ public class HighScore2 {
 		k=0;
 		i=0;
 		j=0;
-		int[] resScoreInt;
+		int[] resScoreInt = null;
 		
 		/* Integer.parseInt fonction trouvee sur Internet 
 		 * Boucle pour convertir la String recuperee en entier */
@@ -130,7 +129,8 @@ public class HighScore2 {
         }
         
         // Les tableaux sont tries  il reste plus qu'a les arranger pour retourner un tableau de BestPlayer 
-        /* Boucle pour remplir le tableau de retour */
+        /* Boucle pour remplir le tableau de retour 
+         * on prend les 10 premiers*/
         for(i=0; i<10; i++)
         {
         	//probleme ici avant a voir si ca marche ulterieurement

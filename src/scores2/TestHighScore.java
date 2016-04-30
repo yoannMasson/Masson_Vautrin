@@ -20,17 +20,15 @@ public class TestHighScore {
 		String pseudo;
 		Scanner s = new Scanner(System.in);
 		HighScore2 hs = new HighScore2();
-		String[] onlineScore;
-		BestPlayer[] tabPlayer = new BestPlayer[10];
+		BestPlayer[] tabPlayer;
+		
 		try{
-			onlineScore = hs.getScores();//Rï¿½cupï¿½ration des scores en ligne
-			//tabPlayer = hs.tenBestScores(onlineScore);
-			
-			for(int i=0;i<onlineScore.length;i++){//Affichage des scores en ligne	
-					System.out.println(onlineScore[i]);
+			tabPlayer = hs.tenBestScores(hs.getScores());
+			for(int i=0;i<tabPlayer.length;i++){//Affichage des scores en ligne	
+					System.out.println(tabPlayer[i]);
 			}
 			
-			System.out.println("Rentrez votre pseudo. ( espace non autorisï¿½) ");//Demande du pseudo
+			System.out.println("Rentrez votre pseudo. ( espace non autorisé) ");//Demande du pseudo
 			pseudo = s.next();
 			s.close();
 
@@ -50,15 +48,15 @@ public class TestHighScore {
 			System.out.println("Le fichier "+nomFichier+" n'existe pas");
 			e.printStackTrace();
 		}catch(UnsupportedEncodingException e){
-			System.out.println("Problï¿½me d'encodage");
+			System.out.println("Problème d'encodage");
 		}catch(HttpException e){
-			System.out.println("Problï¿½me avec la connection au serveur");
+			System.out.println("Problème avec la connection au serveur");
 			e.printStackTrace();
 		}catch (IOException e) {
-			System.out.println("Problï¿½me lors de la lecture du fichier "+nomFichier);
+			System.out.println("Problème lors de la lecture du fichier "+nomFichier);
 			e.printStackTrace();
 		}catch (Exception e){
-			System.out.println("Aucune idï¿½e du pb, you are screwed");
+			System.out.println("Aucune idée du pb, you are screwed");
 			e.printStackTrace();
 		}
 		
@@ -67,8 +65,8 @@ public class TestHighScore {
 
 
 	/**
-	 * Read scores from a file and put them in a List
-	 * @param scores list where the scores will be stored
+	 * Read scores from a file and add them in a List, this method does not erase previus values, just adds the new ones
+	 * @param scores list where the scores will be added
 	 * @param buffer buffer where are read the scores
 	 * @throws IOException in case the buffer is not valid.
 	 */

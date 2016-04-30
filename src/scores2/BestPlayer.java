@@ -10,6 +10,16 @@ public class BestPlayer {
 
 	private String pseudo;
 	private int score;
+	
+	/**
+	 * Create a BestPlayer instance
+	 * @param pseudo pseudo of the BestPlayer
+	 * @param score score of the BestPlayer
+	 */
+	public BestPlayer(String pseudo, int score){
+		this.pseudo = pseudo;
+		this.score = score;
+	}
 
 	/**
 	 * Compare the score of the player with the score of the player given
@@ -44,6 +54,10 @@ public class BestPlayer {
 	
 	public void setPseudo(String nom) {
 		this.pseudo = nom;
+	}
+	
+	public String toString(){
+		return this.getPseudo()+" "+this.getScore();
 	}
 
 }

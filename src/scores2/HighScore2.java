@@ -18,9 +18,9 @@ import org.jsoup.select.*;
 
 public class HighScore2 {
 
-	public static final int NOMBRE_SCORE_AFFICHE = 10;
-	public static final String URL_CONNECTION = "https://thingspeak.com/login";
-	public static final String URL_CHANNEL_FEED = "https://api.thingspeak.com/channels/109203/feeds.csv";
+	private static final int NOMBRE_SCORE_AFFICHE = 10;
+	private static final String URL_CONNECTION = "https://thingspeak.com/login";
+	private static final String URL_CHANNEL_FEED = "https://api.thingspeak.com/channels/109203/feeds.csv";
 
 	/**
 	 * Open an HTTP Connection with the ThingSpeak Server online
@@ -29,7 +29,6 @@ public class HighScore2 {
 	 */
 	public String[] getScores()throws HttpException,UnsupportedEncodingException{
 
-		HttpConnection connection = new HttpConnection();
 		// make sure cookies is turn on
 		/*CookieHandler.setDefault(new CookieManager());
 		// 1. Send a "GET" request, so that you can extract the form's data.
@@ -41,7 +40,7 @@ public class HighScore2 {
 		connection.sendPost(urlConnection, postParams);*/
 
 		// Recuperation des donnï¿½es
-		String result = connection.GetPageContent(URL_CHANNEL_FEED);
+		String result = GetPageContent(URL_CHANNEL_FEED);
 		System.out.println(result);
 		String[] resultat;
 		int i = 6;
@@ -95,7 +94,7 @@ public class HighScore2 {
 		}
 		
 		//Au cas où on ait plus de 10 scores, on ne garde que les 10 premiers
-		if (tabPlayer.length > 10){
+		if (tabPlayer.length > NOMBRE_SCORE_AFFICHE){
 			BestPlayer[] tabPlayerTemp = new BestPlayer[10]; 
 			for(i=0;i<10;i++){
 				tabPlayerTemp[i]=tabPlayer[i];
@@ -111,7 +110,6 @@ public class HighScore2 {
 
 
 	//Classe qui va permettre la connection (voir http://www.mkyong.com/java/how-to-automate-login-a-website-java-example/)
-	private class HttpConnection{
 
 		private List<String> cookies;
 		private HttpsURLConnection conn;
@@ -214,7 +212,7 @@ public class HighScore2 {
 			}
 		}
 
-		public String getFormParams(String html, String username, String password)
+		private String getFormParams(String html, String username, String password)
 				throws UnsupportedEncodingException {
 
 			System.out.println("Extracting form's data...");
@@ -247,16 +245,15 @@ public class HighScore2 {
 			return result.toString();
 		}
 
-		public List<String> getCookies() {
+		private List<String> getCookies() {
 			return cookies;
 		}
 
-		public void setCookies(List<String> cookies) {
+		private void setCookies(List<String> cookies) {
 			this.cookies = cookies;
 		}
 
 	}
 
-}
 
 

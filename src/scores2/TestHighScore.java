@@ -28,7 +28,7 @@ public class TestHighScore {
 					System.out.println(tabPlayer[i]);
 			}
 			
-			System.out.println("Rentrez votre pseudo. ( espace non autorisé) ");//Demande du pseudo
+			System.out.println("Rentrez votre pseudo. (espace non pris en compte) ");//Demande du pseudo
 			pseudo = s.next();
 			s.close();
 

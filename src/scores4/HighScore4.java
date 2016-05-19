@@ -1,4 +1,4 @@
-package scores3;
+package scores4;
 
 import javax.net.ssl.HttpsURLConnection;
 
@@ -10,13 +10,13 @@ import org.jsoup.*;
 import org.jsoup.nodes.*;
 import org.jsoup.select.*;
 /**
- * @version 3.0.0
+ * @version 4.0.0
  * @author Yoann Masson & Baptiste Vautrin
  *
  *	Classe that opens an HTTP Connection with a ThinkSpeak online server
  */
 
-public class HighScore3 {
+public class HighScore4 {
 
 	private static final int NOMBRE_SCORE_AFFICHE = 10;
 	private static final String URL_CONNECTION = "https://thingspeak.com/login";
@@ -68,23 +68,23 @@ public class HighScore3 {
 	 * M�thode renvoyant un tableau de BestPlayer tri�, 10 au maximum
 	 * @param readScores tableau de String de la forme "pseudo score"
 	 */
-	public BestPlayer3[] tenBestScores(String[] readScores){//Les donn�es en entr�e doivent �tre de la forme"pseudo: score" sous peine de lever une Exception
+	public BestPlayer4[] tenBestScores(String[] readScores){//Les donn�es en entr�e doivent �tre de la forme"pseudo: score" sous peine de lever une Exception
 		
 		int i;
-		BestPlayer3[] tabPlayer = new BestPlayer3[readScores.length];
+		BestPlayer4[] tabPlayer = new BestPlayer4[readScores.length];
 		String[] split;
 
 		//Boucle pour remplir le tableau de BestPlayer
 		for(i=0;i<readScores.length;i++){
 			split = readScores[i].split(" "); // On separe le player de son score pour le mettre dans le tableau
-			tabPlayer[i] = new BestPlayer3(split[0],Integer.parseInt(split[1]));
+			tabPlayer[i] = new BestPlayer4(split[0],Integer.parseInt(split[1]));
 		}
 
 		//Boucle pour trier le tableau. (tri � bulles)
 		i=0;
 		while(i<tabPlayer.length-1){
 			if(tabPlayer[i].compareTo(tabPlayer[i+1]) == -1){ //le player � l'indice i est plus petit que celui � l'indice i+1
-				BestPlayer3 z = tabPlayer[i];
+				BestPlayer4 z = tabPlayer[i];
 				tabPlayer[i] = tabPlayer[i+1];
 				tabPlayer[i+1] = z;
 				i=0;
@@ -95,7 +95,7 @@ public class HighScore3 {
 		
 		//Au cas o� on ait plus de 10 scores, on ne garde que les 10 premiers
 		if (tabPlayer.length > NOMBRE_SCORE_AFFICHE){
-			BestPlayer3[] tabPlayerTemp = new BestPlayer3[10]; 
+			BestPlayer4[] tabPlayerTemp = new BestPlayer4[10]; 
 			for(i=0;i<10;i++){
 				tabPlayerTemp[i]=tabPlayer[i];
 			}
@@ -110,7 +110,7 @@ public class HighScore3 {
 	 * Methode envoyant les données sur thingsSpeak
 	 * @param p BestPlayer3
 	 */
-	public void sendScore(BestPlayer3 p){
+	public void sendScore(BestPlayer4 p){
     	try {
     
         	String pseudo = p.getPseudo();

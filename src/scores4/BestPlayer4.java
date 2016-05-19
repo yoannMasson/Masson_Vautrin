@@ -1,12 +1,12 @@
-package scores3;
+package scores4;
 
 /**
- * @version 3.0.0
+ * @version 4.0.0
  * @author Yoann Masson & Baptiste Vautrin
  * 
  *	Class that represent a player, with a name and a score
  */
-public class BestPlayer3 {
+public class BestPlayer4 {
 
 	private String pseudo;
 	private int score;
@@ -16,7 +16,7 @@ public class BestPlayer3 {
 	 * @param pseudo pseudo of the BestPlayer
 	 * @param score score of the BestPlayer
 	 */
-	public BestPlayer3(String pseudo, int score){
+	public BestPlayer4(String pseudo, int score){
 		this.pseudo = pseudo;
 		this.score = score;
 	}
@@ -26,7 +26,7 @@ public class BestPlayer3 {
 	 * @param player player compare to this
 	 * @return -1 if player has a better score, 0 if player has an equal score, 1 if "this" is better
 	 */
-	public int compareTo(BestPlayer3 player){
+	public int compareTo(BestPlayer4 player){
 		if (this.getScore() < player.getScore()){
 			return -1;
 		}

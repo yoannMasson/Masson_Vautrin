@@ -4,7 +4,7 @@ import java.io.*;
 import java.util.*;
 
 /**
- * @version 2.0.0
+ * @version 3.0.0
  * @author Yoann Masson & Baptiste Vautrin
  *
  *	Test Class for the second Version of the game
@@ -28,7 +28,7 @@ public class TestHighScore3 {
 					System.out.println(tabPlayer[i]);
 			}
 			
-			System.out.println("Rentddddrez votre pseudo. (espace non pris en compte) ");//Demande du pseudo
+			System.out.println("Rentrez votre pseudo. (espace non pris en compte) ");//Demande du pseudo
 			pseudo = s.next();
 			s.close();
 

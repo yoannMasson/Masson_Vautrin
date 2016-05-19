@@ -84,7 +84,7 @@ public class HighScore3 {
 		i=0;
 		while(i<tabPlayer.length-1){
 			if(tabPlayer[i].compareTo(tabPlayer[i+1]) == 1){ //le player � l'indice i est plus petit que celui � l'indice i+1
-				BestPlayer z = tabPlayer[i];
+				BestPlayer3 z = tabPlayer[i];
 				tabPlayer[i] = tabPlayer[i+1];
 				tabPlayer[i+1] = z;
 				i=0;
@@ -95,7 +95,7 @@ public class HighScore3 {
 		
 		//Au cas o� on ait plus de 10 scores, on ne garde que les 10 premiers
 		if (tabPlayer.length > NOMBRE_SCORE_AFFICHE){
-			BestPlayer[] tabPlayerTemp = new BestPlayer[10]; 
+			BestPlayer3[] tabPlayerTemp = new BestPlayer3[10]; 
 			for(i=0;i<10;i++){
 				tabPlayerTemp[i]=tabPlayer[i];
 			}
@@ -104,6 +104,7 @@ public class HighScore3 {
 		
 		return tabPlayer;
 	}
+	
 	
 	/**
 	 * Methode envoyant les données sur thingsSpeak
@@ -119,7 +120,6 @@ public class HighScore3 {
         
     	} catch (Exception e) { e.printStackTrace(); }
 	}
-	
 
 
 

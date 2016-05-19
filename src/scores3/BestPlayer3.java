@@ -12,9 +12,9 @@ public class BestPlayer3 {
 	private int score;
 	
 	/**
-	 * Create a BestPlayer3 instance
-	 * @param pseudo pseudo of the BestPlayer3
-	 * @param score score of the BestPlayer3
+	 * Create a BestPlayer instance
+	 * @param pseudo pseudo of the BestPlayer
+	 * @param score score of the BestPlayer
 	 */
 	public BestPlayer3(String pseudo, int score){
 		this.pseudo = pseudo;

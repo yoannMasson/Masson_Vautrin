@@ -27,7 +27,7 @@ public class BestPlayer3 {
 	 * @return -1 if player has a better score, 0 if player has an equal score, 1 if "this" is better
 	 */
 	public int compareTo(BestPlayer3 player){
-		if (this.getScore()< player.getScore()){
+		if (this.getScore() < player.getScore()){
 			return -1;
 		}
 		else if (this.getScore() == player.getScore()){

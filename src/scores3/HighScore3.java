@@ -83,7 +83,7 @@ public class HighScore3 {
 		//Boucle pour trier le tableau. (tri � bulles)
 		i=0;
 		while(i<tabPlayer.length-1){
-			if(tabPlayer[i].compareTo(tabPlayer[i+1]) == 1){ //le player � l'indice i est plus petit que celui � l'indice i+1
+			if(tabPlayer[i].compareTo(tabPlayer[i+1]) == -1){ //le player � l'indice i est plus petit que celui � l'indice i+1
 				BestPlayer3 z = tabPlayer[i];
 				tabPlayer[i] = tabPlayer[i+1];
 				tabPlayer[i+1] = z;

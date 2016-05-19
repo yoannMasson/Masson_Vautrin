@@ -19,8 +19,8 @@ public class TestHighScore3 {
 		List<Integer> scores = new LinkedList<>();
 		String pseudo;
 		Scanner s = new Scanner(System.in);
-		HighScore2 hs = new HighScore2();
-		BestPlayer[] tabPlayer;
+		HighScore3 hs = new HighScore3();
+		BestPlayer3[] tabPlayer;
 		
 		try{
 			tabPlayer = hs.tenBestScores(hs.getScores());
@@ -41,6 +41,17 @@ public class TestHighScore3 {
 			buffer.close();
 			
 			
+			for (BestPlayer3 p : tabPlayer)
+        	{
+            		if (p.getScore() < scores.get((int)(Math.random()*scores.size())))
+            		{
+                		hs.sendScore(new BestPlayer3(pseudo, scores.get((int)(Math.random()*scores.size()))));
+                		break;
+            		}
+        	}
+        	
+			
+			
 			
 			
 			//Gestion des exceptions
@@ -48,15 +59,15 @@ public class TestHighScore3 {
 			System.out.println("Le fichier "+nomFichier+" n'existe pas");
 			e.printStackTrace();
 		}catch(UnsupportedEncodingException e){
-			System.out.println("Probl�me d'encodage");
+			System.out.println("Probleme d'encodage");
 		}catch(HttpException e){
-			System.out.println("Probl�me avec la connection au serveur");
+			System.out.println("Probleme avec la connection au serveur");
 			e.printStackTrace();
 		}catch (IOException e) {
-			System.out.println("Probl�me lors de la lecture du fichier "+nomFichier);
+			System.out.println("Probleme lors de la lecture du fichier "+nomFichier);
 			e.printStackTrace();
 		}catch (Exception e){
-			System.out.println("Aucune id�e du pb, you are screwed");
+			System.out.println("Aucune idee du pb, you are screwed");
 			e.printStackTrace();
 		}
 		

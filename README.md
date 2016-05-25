@@ -9,4 +9,4 @@ Lien documentation : http://yoannmasson.github.io/Masson_Vautrin/
 
 Projet testé sous Eclipse (il faudra probablement changer le chemin pour le fichier jsoup)
 
-/!\ La compilation en ligne de commande peut poser probleme du fait que le projet ait été fait sous Eclipse (accentuation, etc...)  /!\
+/!\ La compilation en ligne de commandes peut poser problème du fait que le projet ait été fait sous Eclipse (accentuation, etc...)  /!\

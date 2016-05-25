@@ -7,6 +7,6 @@ Chaque étape du projet est représentée par un package
 
 Lien documentation : http://yoannmasson.github.io/Masson_Vautrin/
 
-Projet testé sous Eclipse
+Projet testé sous Eclipse (il faudra probablement changer le chemin pour le fichier jsoup)
 
-/!\ L'accentuation peut poser des problèmes lors de la compilation en ligne de commande si -encoding ISO-8859-1 n'est pas spécifié  /!\
+/!\ La compilation en ligne de commande peut poser probleme du fait que le projet ait été fait sous Eclipse (accentuation, etc...)  /!\
